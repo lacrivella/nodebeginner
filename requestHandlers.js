@@ -1,4 +1,4 @@
-var querystring = require("querystring");
+var querystring = require("querystring"),
     fs = require("fs");
 
 function start(response, postData) {
@@ -7,8 +7,8 @@ function start(response, postData) {
 
     var body = '<html>'+
         '<head>'+
-        '<meta http-equiv="Content-Type" content="text/html; '+
-        'charset=UTF-8" />'+
+        '<meta http-equiv="Content-Type" '+
+        'content="text/html; charset=UTF-8" />'+
         '</head>'+
         '<body>'+
         '<form action="/upload" method="post">'+
@@ -27,12 +27,12 @@ function upload(response, postData) {
     console.log("request handler upload was called");
     response.writeHead(200, {"Content-Type": "text/plain"});
     response.write("You've sent the text: "+
-        querystring.parse(postData).text);
+    querystring.parse(postData).text);
     response.end();
 }
 
 function show(response) {
-    console.log("Request handler 'show' was called.");
+    console.log("Request handler show was called.");
     response.writeHead(200, {"Content-Type": "image/png"});
     fs.createReadStream("/tmp/test.png").pipe(response);
 }
