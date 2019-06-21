@@ -33,7 +33,7 @@ function upload(response, postData) {
 
 function show(response) {
     console.log("Request handler show was called.");
-    response.writeHead(200, {"Content-Type": "image/png"});
+    response.writeHead(200, {"Content-Type":  "image/png"});
     fs.createReadStream("/tmp/test.png").pipe(response);
 }
 
